@@ -5,7 +5,7 @@ public class Main {
         Theater theater = new Theater(100L);
         Audience audience1 = new Audience(0L);
         Audience audience2 = new Audience(50L);
-        TicketOffice ticketOffice = new TicketOffice(0L);
+        TicketOffice ticketOffice = new TicketOffice(theater,0L);
         TicketSeller seller = new TicketSeller();
 
         theater.setTicketOffices(ticketOffice);
