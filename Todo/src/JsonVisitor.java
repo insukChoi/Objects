@@ -18,9 +18,12 @@ public class JsonVisitor implements Visitor {
     }
 
     @Override
-    public void end(int depth) {
+    public void end(int depth, boolean isEnd) {
         String padding = getPadding(depth);
         System.out.println(padding + "  ]");
-        System.out.println(padding + "},");
+        System.out.println(padding + "}");
+        if (!isEnd){
+            System.out.println(",");
+        }
     }
 }
