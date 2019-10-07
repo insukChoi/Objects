@@ -1,12 +1,14 @@
 public class JsonVisitor implements Visitor {
+
+    private String result = "";
+
     @Override
     public void drawTask(CompositeTask task, int depth) {
-        String padding = getPadding(depth);
-        System.out.println(padding + "{");
-        System.out.println(padding + "  title: \"" + task.getTitle() + "\",");
-        System.out.println(padding + "  date: \"" + task.getDate() + "\",");
-        System.out.println(padding + "  isComplete: " + task.isComplete() + ",");
-        System.out.println(padding + "  sub: [ ");
+        result +=  "{";
+        result +=  "  title: \"" + task.getTitle() + "\",";
+        result +=  "  date: \"" + task.getDate() + "\",";
+        result +=  "  isComplete: " + task.isComplete() + ",";
+        result +=  "  sub: [ ";
     }
 
     private String getPadding(int depth) {
@@ -20,10 +22,14 @@ public class JsonVisitor implements Visitor {
     @Override
     public void end(int depth, boolean isEnd) {
         String padding = getPadding(depth);
-        System.out.println(padding + "  ]");
-        System.out.println(padding + "}");
+        result +=  "  ]";
+        result +=  "}";
         if (!isEnd){
-            System.out.println(",");
+            result += ",";
         }
+    }
+
+    public String getJson() {
+        return result;
     }
 }
